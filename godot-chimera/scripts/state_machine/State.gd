@@ -3,6 +3,9 @@ class_name State extends Node
 # must be called to switch to a different state.
 signal switch_state(state: State)
 
+# a reference set by the statemachine so the state knows what to affect
+var actor: CharacterBody3D
+
 func enter_state() -> void:
 	# always happens first when entering the state
 	pass

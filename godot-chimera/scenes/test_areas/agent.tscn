@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bcnlw30owupw1"]
+
+[ext_resource type="Script" uid="uid://bfhchdtowsdjx" path="res://scenes/test_areas/agent.gd" id="1_m1f6j"]
+[ext_resource type="Script" uid="uid://dyhj68uu5cf1y" path="res://scripts/state_machine/state_machine.gd" id="2_es3lf"]
+[ext_resource type="Script" uid="uid://bikdfogaquedb" path="res://scripts/state_machine/states/idle.gd" id="3_we4hy"]
+[ext_resource type="Script" uid="uid://t1iltwrh3vih" path="res://scripts/state_machine/states/random_walk.gd" id="4_es3lf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ifpyu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_m1f6j"]
+size = Vector3(0.11743164, 1, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ifpyu"]
+
+[node name="Agent" type="CharacterBody3D" unique_id=623580250]
+collision_layer = 2
+script = ExtResource("1_m1f6j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=602430447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ifpyu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1582263931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_m1f6j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1361823161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ifpyu")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1560798009]
+unique_name_in_owner = true
+path_height_offset = 0.5
+avoidance_enabled = true
+radius = 0.3
+neighbor_distance = 15.0
+debug_enabled = true
+
+[node name="StateMachine" type="Node" parent="." unique_id=851342564 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_es3lf")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://dyhj68uu5cf1y"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1575010321 node_paths=PackedStringArray("random_walk_state")]
+script = ExtResource("3_we4hy")
+random_walk_state = NodePath("../RandomWalk")
+metadata/_custom_type_script = "uid://b4nipnw2rntbg"
+
+[node name="idleTimer" type="Timer" parent="StateMachine/Idle" unique_id=130942973]
+one_shot = true
+
+[node name="RandomWalk" type="Node" parent="StateMachine" unique_id=1978067849 node_paths=PackedStringArray("idle_state", "nav_agent")]
+script = ExtResource("4_es3lf")
+idle_state = NodePath("../Idle")
+nav_agent = NodePath("../../NavigationAgent3D")
+metadata/_custom_type_script = "uid://b4nipnw2rntbg"
+
+[connection signal="timeout" from="StateMachine/Idle/idleTimer" to="StateMachine/Idle" method="_on_timer_timeout"]
