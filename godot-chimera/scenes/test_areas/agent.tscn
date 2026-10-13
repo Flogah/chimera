@@ -38,16 +38,13 @@ debug_enabled = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=851342564 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_es3lf")
-initial_state = NodePath("Idle")
+initial_state = NodePath("RandomWalk")
 metadata/_custom_type_script = "uid://dyhj68uu5cf1y"
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1575010321]
 script = ExtResource("3_we4hy")
 state_id = &"idle"
 metadata/_custom_type_script = "uid://b4nipnw2rntbg"
-
-[node name="idleTimer" type="Timer" parent="StateMachine/Idle" unique_id=130942973]
-one_shot = true
 
 [node name="RandomWalk" type="Node" parent="StateMachine" unique_id=1978067849 node_paths=PackedStringArray("idle_state", "nav_agent")]
 script = ExtResource("4_es3lf")
@@ -56,4 +53,7 @@ nav_agent = NodePath("../../NavigationAgent3D")
 state_id = &"random_walk"
 metadata/_custom_type_script = "uid://b4nipnw2rntbg"
 
-[connection signal="timeout" from="StateMachine/Idle/idleTimer" to="StateMachine/Idle" method="_on_timer_timeout"]
+[node name="randomTimer" type="Timer" parent="StateMachine/RandomWalk" unique_id=130942973]
+one_shot = true
+
+[connection signal="timeout" from="StateMachine/RandomWalk/randomTimer" to="StateMachine/RandomWalk" method="randomize_target_position"]

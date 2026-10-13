@@ -3,10 +3,19 @@ extends State
 @export var idle_state:State
 @export var nav_agent: NavigationAgent3D
 
+var random_timer: Timer
+
 var target_pos
 
 func enter_state(_data: Dictionary = {}) -> void:
-	target_pos = random_vector3(Vector3(10.0, 0.0, 10.0))
+	randomize_target_position()
+	
+	if !random_timer:
+		random_timer = Timer.new()
+		random_timer.one_shot = true
+		random_timer.timeout.connect(randomize_target_position)
+		add_child(random_timer)
+	
 	nav_agent.velocity_computed.connect(on_velocity_computed)
 
 func physics_update(_delta: float) -> void:
@@ -21,7 +30,8 @@ func physics_update(_delta: float) -> void:
 		on_velocity_computed(new_velocity)
 	
 	if nav_agent.is_navigation_finished():
-		switch_state.emit("idle")
+		if random_timer.is_stopped():
+			random_timer.start(randf_range(.5, 1.5))
 	
 	var rot_speed = 4.0
 	var target_rot = dir.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
@@ -43,3 +53,6 @@ func random_vector3(bound: Vector3) -> Vector3:
 
 func on_velocity_computed(safe_velocity: Vector3) -> void:
 	actor.velocity = safe_velocity
+
+func randomize_target_position():
+	target_pos = random_vector3(Vector3(10.0, 0.0, 10.0))
