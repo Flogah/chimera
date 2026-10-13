@@ -41,9 +41,9 @@ script = ExtResource("2_es3lf")
 initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://dyhj68uu5cf1y"
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=1575010321 node_paths=PackedStringArray("random_walk_state")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1575010321]
 script = ExtResource("3_we4hy")
-random_walk_state = NodePath("../RandomWalk")
+state_id = &"idle"
 metadata/_custom_type_script = "uid://b4nipnw2rntbg"
 
 [node name="idleTimer" type="Timer" parent="StateMachine/Idle" unique_id=130942973]
@@ -53,6 +53,7 @@ one_shot = true
 script = ExtResource("4_es3lf")
 idle_state = NodePath("../Idle")
 nav_agent = NodePath("../../NavigationAgent3D")
+state_id = &"random_walk"
 metadata/_custom_type_script = "uid://b4nipnw2rntbg"
 
 [connection signal="timeout" from="StateMachine/Idle/idleTimer" to="StateMachine/Idle" method="_on_timer_timeout"]

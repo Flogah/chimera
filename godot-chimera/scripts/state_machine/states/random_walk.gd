@@ -5,7 +5,7 @@ extends State
 
 var target_pos
 
-func enter_state() -> void:
+func enter_state(_data: Dictionary = {}) -> void:
 	target_pos = random_vector3(Vector3(10.0, 0.0, 10.0))
 	nav_agent.velocity_computed.connect(on_velocity_computed)
 
@@ -21,7 +21,7 @@ func physics_update(_delta: float) -> void:
 		on_velocity_computed(new_velocity)
 	
 	if nav_agent.is_navigation_finished():
-		switch_state.emit(idle_state)
+		switch_state.emit("idle")
 	
 	var rot_speed = 4.0
 	var target_rot = dir.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
