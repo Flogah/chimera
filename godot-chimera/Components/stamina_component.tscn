@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://m1r2h5e7pdpj"]
+
+[ext_resource type="Script" uid="uid://qx0q1tx52b1b" path="res://Components/stamina_component.gd" id="1_mtdg4"]
+
+[node name="StaminaComponent" type="Node" unique_id=416599857]
+script = ExtResource("1_mtdg4")
