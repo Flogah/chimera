@@ -1,4 +1,3 @@
-@abstract
 class_name State extends Node
 
 # must be called to switch to a different state.

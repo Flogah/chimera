@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dyhj68uu5cf1y" path="res://scripts/state_machine/state_machine.gd" id="2_es3lf"]
 [ext_resource type="Script" uid="uid://bikdfogaquedb" path="res://scripts/state_machine/states/idle.gd" id="3_we4hy"]
 [ext_resource type="Script" uid="uid://t1iltwrh3vih" path="res://scripts/state_machine/states/random_walk.gd" id="4_es3lf"]
+[ext_resource type="Script" uid="uid://bbnhtix0c3xu1" path="res://scripts/state_machine/states/attack.gd" id="5_we4hy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ifpyu"]
 
@@ -11,6 +12,66 @@
 size = Vector3(0.11743164, 1, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ifpyu"]
+
+[sub_resource type="Animation" id="Animation_j77wx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../MeshInstance3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../MeshInstance3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o3lxc"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../MeshInstance3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.28, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0), Vector3(0, 2.3820891, 0.20941426), Vector3(0, 1.5334101, 0.5363944), Vector3(0, 2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../MeshInstance3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.28, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.17770098, 0, 0), Vector3(1.9360632, 0, 0), Vector3(1.5707964, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bhxjw"]
+_data = {
+&"RESET": SubResource("Animation_j77wx"),
+&"attack": SubResource("Animation_o3lxc")
+}
 
 [node name="Agent" type="CharacterBody3D" unique_id=623580250]
 collision_layer = 2
@@ -34,7 +95,6 @@ path_height_offset = 0.5
 avoidance_enabled = true
 radius = 0.3
 neighbor_distance = 15.0
-debug_enabled = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=851342564 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_es3lf")
@@ -55,5 +115,14 @@ metadata/_custom_type_script = "uid://b4nipnw2rntbg"
 
 [node name="randomTimer" type="Timer" parent="StateMachine/RandomWalk" unique_id=130942973]
 one_shot = true
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1747349171]
+script = ExtResource("5_we4hy")
+state_id = &"attack"
+metadata/_custom_type_script = "uid://b4nipnw2rntbg"
+
+[node name="AttackAnimPlayer" type="AnimationPlayer" parent="StateMachine/Attack" unique_id=1494900851]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_bhxjw")
 
 [connection signal="timeout" from="StateMachine/RandomWalk/randomTimer" to="StateMachine/RandomWalk" method="randomize_target_position"]
