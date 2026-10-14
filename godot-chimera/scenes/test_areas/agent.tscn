@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://bcnlw30owupw1"]
+
+[ext_resource type="Script" uid="uid://bfhchdtowsdjx" path="res://scenes/test_areas/agent.gd" id="1_m1f6j"]
+[ext_resource type="Script" uid="uid://dyhj68uu5cf1y" path="res://scripts/state_machine/state_machine.gd" id="2_es3lf"]
+[ext_resource type="Script" uid="uid://cyn4iinfemcdq" path="res://scripts/hitbox/hitbox.gd" id="2_o3lxc"]
+[ext_resource type="Script" uid="uid://bikdfogaquedb" path="res://scripts/state_machine/states/idle.gd" id="3_we4hy"]
+[ext_resource type="Script" uid="uid://t1iltwrh3vih" path="res://scripts/state_machine/states/random_walk.gd" id="4_es3lf"]
+[ext_resource type="Script" uid="uid://bbnhtix0c3xu1" path="res://scripts/state_machine/states/attack.gd" id="5_we4hy"]
+[ext_resource type="Script" uid="uid://br33q50bl3mxq" path="res://scripts/hitbox/hurtbox.gd" id="7_bhxjw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ifpyu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_m1f6j"]
+size = Vector3(0.11743164, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ifpyu"]
+size = Vector3(0.5722656, 2.6103516, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ifpyu"]
+
+[sub_resource type="Animation" id="Animation_j77wx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Weapon/HitBox/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_o3lxc"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.28, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0), Vector3(0, 2.3820891, 0.20941426), Vector3(0, 1.5334101, 0.5363944), Vector3(0, 2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.28, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.17770098, 0, 0), Vector3(1.9360632, 0, 0), Vector3(1.5707964, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Weapon/HitBox/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.42),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bhxjw"]
+_data = {
+&"RESET": SubResource("Animation_j77wx"),
+&"attack": SubResource("Animation_o3lxc")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o3lxc"]
+
+[node name="Agent" type="CharacterBody3D" unique_id=623580250]
+collision_layer = 2
+script = ExtResource("1_m1f6j")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=602430447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ifpyu")
+
+[node name="Weapon" type="MeshInstance3D" parent="." unique_id=1582263931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_m1f6j")
+
+[node name="HitBox" type="Area3D" parent="Weapon" unique_id=1659992305]
+unique_name_in_owner = true
+script = ExtResource("2_o3lxc")
+metadata/_custom_type_script = "uid://cyn4iinfemcdq"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/HitBox" unique_id=1443102273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8051758, 0)
+shape = SubResource("BoxShape3D_ifpyu")
+disabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1361823161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ifpyu")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1560798009]
+unique_name_in_owner = true
+path_height_offset = 0.5
+avoidance_enabled = true
+radius = 0.3
+neighbor_distance = 15.0
+
+[node name="StateMachine" type="Node" parent="." unique_id=851342564 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_es3lf")
+initial_state = NodePath("RandomWalk")
+metadata/_custom_type_script = "uid://dyhj68uu5cf1y"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1575010321]
+script = ExtResource("3_we4hy")
+state_id = &"idle"
+metadata/_custom_type_script = "uid://b4nipnw2rntbg"
+
+[node name="RandomWalk" type="Node" parent="StateMachine" unique_id=1978067849 node_paths=PackedStringArray("idle_state", "nav_agent")]
+script = ExtResource("4_es3lf")
+idle_state = NodePath("../Idle")
+nav_agent = NodePath("../../NavigationAgent3D")
+state_id = &"random_walk"
+metadata/_custom_type_script = "uid://b4nipnw2rntbg"
+
+[node name="randomTimer" type="Timer" parent="StateMachine/RandomWalk" unique_id=130942973]
+one_shot = true
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1747349171]
+script = ExtResource("5_we4hy")
+state_id = &"attack"
+metadata/_custom_type_script = "uid://b4nipnw2rntbg"
+
+[node name="AttackAnimPlayer" type="AnimationPlayer" parent="StateMachine/Attack" unique_id=1494900851]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_bhxjw")
+
+[node name="HurtBox" type="Area3D" parent="." unique_id=69552363]
+unique_name_in_owner = true
+script = ExtResource("7_bhxjw")
+metadata/_custom_type_script = "uid://br33q50bl3mxq"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HurtBox" unique_id=763628221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_o3lxc")
+
+[connection signal="timeout" from="StateMachine/RandomWalk/randomTimer" to="StateMachine/RandomWalk" method="randomize_target_position"]
