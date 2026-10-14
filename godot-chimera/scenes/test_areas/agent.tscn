@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://t1iltwrh3vih" path="res://scripts/state_machine/states/random_walk.gd" id="4_es3lf"]
 [ext_resource type="Script" uid="uid://bbnhtix0c3xu1" path="res://scripts/state_machine/states/attack.gd" id="5_we4hy"]
 [ext_resource type="Script" uid="uid://br33q50bl3mxq" path="res://scripts/hitbox/hurtbox.gd" id="7_bhxjw"]
+[ext_resource type="Script" uid="uid://fvefmue4cxkv" path="res://scripts/state_machine/states/patrol.gd" id="7_bjb13"]
+[ext_resource type="Script" uid="uid://bbjf1da2xb67t" path="res://scripts/state_machine/states/follow.gd" id="8_bjb13"]
+[ext_resource type="Script" uid="uid://cqruue83wwfr1" path="res://scripts/detection.gd" id="10_7dvuf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ifpyu"]
 
@@ -104,6 +107,9 @@ _data = {
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o3lxc"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ifpyu"]
+radius = 8.50236
+
 [node name="Agent" type="CharacterBody3D" unique_id=623580250]
 collision_layer = 2
 script = ExtResource("1_m1f6j")
@@ -137,9 +143,9 @@ avoidance_enabled = true
 radius = 0.3
 neighbor_distance = 15.0
 
-[node name="StateMachine" type="Node" parent="." unique_id=851342564 node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=851342564]
+unique_name_in_owner = true
 script = ExtResource("2_es3lf")
-initial_state = NodePath("RandomWalk")
 metadata/_custom_type_script = "uid://dyhj68uu5cf1y"
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1575010321]
@@ -147,9 +153,8 @@ script = ExtResource("3_we4hy")
 state_id = &"idle"
 metadata/_custom_type_script = "uid://b4nipnw2rntbg"
 
-[node name="RandomWalk" type="Node" parent="StateMachine" unique_id=1978067849 node_paths=PackedStringArray("idle_state", "nav_agent")]
+[node name="RandomWalk" type="Node" parent="StateMachine" unique_id=1978067849 node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("4_es3lf")
-idle_state = NodePath("../Idle")
 nav_agent = NodePath("../../NavigationAgent3D")
 state_id = &"random_walk"
 metadata/_custom_type_script = "uid://b4nipnw2rntbg"
@@ -166,6 +171,17 @@ metadata/_custom_type_script = "uid://b4nipnw2rntbg"
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_bhxjw")
 
+[node name="Patrol" type="Node" parent="StateMachine" unique_id=1195464023 node_paths=PackedStringArray("nav_agent")]
+script = ExtResource("7_bjb13")
+nav_agent = NodePath("../../NavigationAgent3D")
+state_id = &"patrol"
+metadata/_custom_type_script = "uid://b4nipnw2rntbg"
+
+[node name="Follow" type="Node" parent="StateMachine" unique_id=1875046626]
+script = ExtResource("8_bjb13")
+state_id = &"follow"
+metadata/_custom_type_script = "uid://b4nipnw2rntbg"
+
 [node name="HurtBox" type="Area3D" parent="." unique_id=69552363]
 unique_name_in_owner = true
 script = ExtResource("7_bhxjw")
@@ -174,5 +190,15 @@ metadata/_custom_type_script = "uid://br33q50bl3mxq"
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="HurtBox" unique_id=763628221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_o3lxc")
+
+[node name="Detection" type="Area3D" parent="." unique_id=1280241424]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("10_7dvuf")
+metadata/_custom_type_script = "uid://cqruue83wwfr1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection" unique_id=7926299]
+shape = SubResource("SphereShape3D_ifpyu")
 
 [connection signal="timeout" from="StateMachine/RandomWalk/randomTimer" to="StateMachine/RandomWalk" method="randomize_target_position"]
