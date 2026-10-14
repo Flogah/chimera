@@ -133,6 +133,10 @@ transform = Transform3D(1, 0, 0, 0, 0.6707497, 0.74168384, 0, -0.74168384, 0.670
 [node name="Agent" parent="." unique_id=623580250 node_paths=PackedStringArray("patrol_parent") instance=ExtResource("1_2pr80")]
 patrol_parent = NodePath("../PatrolPath")
 
+[node name="Agent2" parent="." unique_id=500201544 node_paths=PackedStringArray("patrol_parent") instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.166221, 0, 2.8945143)
+patrol_parent = NodePath("../PatrolPath")
+
 [node name="PatrolPath" type="Node3D" parent="." unique_id=1962023532]
 
 [node name="PatrolPoint" type="Marker3D" parent="PatrolPath" unique_id=1356948680]
