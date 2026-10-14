@@ -13,15 +13,14 @@ func _physics_process(delta: float) -> void:
 	forward.y = 0.0
 	forward = forward.normalized()
 	
-	var right: Vector3 = camera_arm.global_transform.basis.x
-	right = right.normalized()
+	var right: Vector3 = camera_arm.global_transform.basis.x.normalized()
 	
 	var move_vector: Vector3 = right * input_vector.x - forward * input_vector.y
 	velocity.x = move_vector.x * speed
 	velocity.z = move_vector.z * speed
 	
 	if move_vector.length_squared() > 0.001:
-		var target_angle := -atan2(move_vector.x, move_vector.z)
+		var target_angle := atan2(-move_vector.x, -move_vector.z)
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, target_angle, rotation_speed * delta)
 		
 	move_and_slide()
