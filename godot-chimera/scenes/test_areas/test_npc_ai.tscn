@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://dmvbpwemka8ng"]
+
+[ext_resource type="PackedScene" uid="uid://bcnlw30owupw1" path="res://scenes/test_areas/agent.tscn" id="1_2pr80"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xab7"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_2pr80"]
+sky_material = SubResource("ProceduralSkyMaterial_0xab7")
+
+[sub_resource type="Environment" id="Environment_loja2"]
+background_mode = 2
+sky = SubResource("Sky_2pr80")
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ifpyu"]
+vertices = PackedVector3Array(-4.8999996, 0.5, 3.8000002, -3.6999998, 0.5, 3.8000002, -3.6999998, 0.5, 1.7000008, -4.8999996, 0.5, 1.1000004, -9.4, 0.5, 4.4000006, -5.2, 0.5, 4.4000006, -4.8999996, 0.5, -0.6999998, -4.8999996, 0.5, -4.2999997, -9.4, 0.5, -9.4, -3.6999998, 0.5, -1, -3.6999998, 0.5, -4, -4.8999996, 0.5, -6.1, -3.6999998, 0.5, -6.3999996, -3.6999998, 0.5, -9.4, 2.6000004, 0.5, -6.7, 2.9000006, 0.5, -4.6, 3.500001, 0.5, -5.5, 5.000001, 0.5, -5.5, -2.7999997, 0.5, -6.3999996, -2.4999995, 0.5, -5.2, 0.5, 0.5, -5.2, 0.8000002, 0.5, -6.7, 9.5, 0.5, -9.4, 9.5, 0.5, -5.5, 5.6000004, 0.5, -3.3999996, 4.700001, 0.5, -3.1, 5.000001, 0.5, -1.5999994, 6.200001, 0.5, -1, 6.200001, 0.5, 0.8000002, 4.700001, 0.5, 1.1000004, 4.4000006, 0.5, 3.500001, 5.000001, 0.5, 3.8000002, 5.000001, 0.5, 5.6000004, 4.4000006, 0.5, 9.5, 9.5, 0.5, 9.5, 4.4000006, 0.5, 5.9000006, 5.6000004, 0.5, -4.8999996, 1.4000006, 0.5, 4.4000006, 1.7000008, 0.5, 5.000001, 2.6000004, 0.5, 5.000001, 2.9000006, 0.5, 3.500001, -0.39999962, 0.5, 4.4000006, 3.500001, 0.5, -3.1, 3.8000002, 0.5, -1, 0.8000002, 0.5, -4.2999997, -2.7999997, 0.5, -4, -2.4999995, 0.5, -0.39999962, -2.7999997, 0.5, 4.1000004, -2.7999997, 0.5, 5.000001, -0.6999998, 0.5, 5.3, 3.8000002, 0.5, 0.5, -2.4999995, 0.5, 1.1000004, 2.9000006, 0.5, 5.9000006, 1.4000006, 0.5, 6.800001, -0.39999962, 0.5, 6.800001, -3.1, 0.5, 6.200001, -4.8999996, 0.5, 6.200001, -9.4, 0.5, 9.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 8), PackedInt32Array(3, 0, 5), PackedInt32Array(10, 9, 7), PackedInt32Array(7, 9, 6), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 8), PackedInt32Array(8, 11, 7), PackedInt32Array(6, 3, 5), PackedInt32Array(16, 15, 14), PackedInt32Array(17, 16, 14), PackedInt32Array(18, 12, 13), PackedInt32Array(20, 19, 18), PackedInt32Array(20, 18, 21), PackedInt32Array(21, 18, 13), PackedInt32Array(21, 13, 14), PackedInt32Array(14, 13, 22), PackedInt32Array(17, 14, 23), PackedInt32Array(23, 14, 22), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(23, 28, 27), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 28), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 28), PackedInt32Array(34, 28, 23), PackedInt32Array(32, 33, 35), PackedInt32Array(36, 17, 23), PackedInt32Array(24, 36, 27), PackedInt32Array(27, 36, 23), PackedInt32Array(32, 31, 28), PackedInt32Array(38, 37, 39), PackedInt32Array(39, 37, 40), PackedInt32Array(40, 37, 41), PackedInt32Array(25, 26, 42), PackedInt32Array(42, 26, 43), PackedInt32Array(20, 44, 19), PackedInt32Array(19, 44, 45), PackedInt32Array(45, 44, 46), PackedInt32Array(48, 47, 49), PackedInt32Array(49, 47, 41), PackedInt32Array(42, 43, 50), PackedInt32Array(1, 2, 47), PackedInt32Array(47, 2, 51), PackedInt32Array(47, 51, 41), PackedInt32Array(44, 15, 42), PackedInt32Array(29, 30, 50), PackedInt32Array(50, 30, 40), PackedInt32Array(41, 51, 46), PackedInt32Array(42, 50, 44), PackedInt32Array(44, 50, 40), PackedInt32Array(44, 40, 46), PackedInt32Array(46, 40, 41), PackedInt32Array(10, 45, 9), PackedInt32Array(9, 45, 46), PackedInt32Array(39, 52, 38), PackedInt32Array(38, 52, 53), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 57), PackedInt32Array(57, 54, 33), PackedInt32Array(48, 49, 55), PackedInt32Array(55, 49, 54), PackedInt32Array(5, 56, 4), PackedInt32Array(4, 56, 57), PackedInt32Array(52, 35, 53), PackedInt32Array(53, 35, 33), PackedInt32Array(54, 53, 33)]
+cell_size = 0.3
+agent_radius = 0.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ckr0i"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckr0i"]
+albedo_color = Color(0.35906908, 0.35906908, 0.35906908, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ifpyu"]
+material = SubResource("StandardMaterial3D_ckr0i")
+size = Vector2(20, 20)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ifpyu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ifpyu"]
+
+[node name="test_NPC_AI" type="Node3D" unique_id=41344068]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1137531189]
+environment = SubResource("Environment_loja2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1313764948]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1514241214]
+navigation_mesh = SubResource("NavigationMesh_ifpyu")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D" unique_id=355047018]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor" unique_id=655007147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_ckr0i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor" unique_id=1945176498]
+mesh = SubResource("PlaneMesh_ifpyu")
+
+[node name="Pillar" type="StaticBody3D" parent="NavigationRegion3D" unique_id=467095355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Pillar" unique_id=1932116425]
+mesh = SubResource("CylinderMesh_ifpyu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Pillar" unique_id=512611758]
+shape = SubResource("CylinderShape3D_ifpyu")
+
+[node name="Pillar2" type="StaticBody3D" parent="NavigationRegion3D" unique_id=152129095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8079796, 1, 4.716611)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Pillar2" unique_id=1651860073]
+mesh = SubResource("CylinderMesh_ifpyu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Pillar2" unique_id=27299049]
+shape = SubResource("CylinderShape3D_ifpyu")
+
+[node name="Pillar3" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1339958529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0049543, 1, -0.20291424)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Pillar3" unique_id=955678589]
+mesh = SubResource("CylinderMesh_ifpyu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Pillar3" unique_id=772536930]
+shape = SubResource("CylinderShape3D_ifpyu")
+
+[node name="Pillar4" type="StaticBody3D" parent="NavigationRegion3D" unique_id=382967654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6359396, 1, -5.5230336)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Pillar4" unique_id=1358849415]
+mesh = SubResource("CylinderMesh_ifpyu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Pillar4" unique_id=1411494256]
+shape = SubResource("CylinderShape3D_ifpyu")
+
+[node name="Pillar5" type="StaticBody3D" parent="NavigationRegion3D" unique_id=2060589406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6708946, 1, -5.1907005)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Pillar5" unique_id=578523280]
+mesh = SubResource("CylinderMesh_ifpyu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Pillar5" unique_id=985343133]
+shape = SubResource("CylinderShape3D_ifpyu")
+
+[node name="Pillar6" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1976124547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7589302, 1, 0.30552244)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Pillar6" unique_id=1610472922]
+mesh = SubResource("CylinderMesh_ifpyu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Pillar6" unique_id=1757975678]
+shape = SubResource("CylinderShape3D_ifpyu")
+
+[node name="Pillar7" type="StaticBody3D" parent="NavigationRegion3D" unique_id=267825217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.292795, 1, -4.2139907)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Pillar7" unique_id=1958177919]
+mesh = SubResource("CylinderMesh_ifpyu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Pillar7" unique_id=1622019301]
+shape = SubResource("CylinderShape3D_ifpyu")
+
+[node name="Pillar8" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1329192564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46779537, 1, 5.571259)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Pillar8" unique_id=626020481]
+mesh = SubResource("CylinderMesh_ifpyu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Pillar8" unique_id=1692556457]
+shape = SubResource("CylinderShape3D_ifpyu")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1313659427]
+transform = Transform3D(1, 0, 0, 0, 0.6707497, 0.74168384, 0, -0.74168384, 0.6707497, 0, 11.547187, 13)
+
+[node name="Agent" parent="." unique_id=623580250 instance=ExtResource("1_2pr80")]
+
+[node name="Agent2" parent="." unique_id=2132754753 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0990071, 0, 2.1358943)
+
+[node name="Agent3" parent="." unique_id=1601360894 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6457229, 0, -1.422117)
+
+[node name="Agent4" parent="." unique_id=1427131136 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0037448406, 0, -3.1191068)
+
+[node name="Agent7" parent="." unique_id=1458650736 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.270391, 0, -5.6784725)
+
+[node name="Agent8" parent="." unique_id=234061437 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1713843, 0, -3.5425782)
+
+[node name="Agent9" parent="." unique_id=874148819 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6246686, 0, -7.1005898)
+
+[node name="Agent10" parent="." unique_id=869345709 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.266646, 0, -8.797579)
+
+[node name="Agent11" parent="." unique_id=711257947 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.095892, 0, 5.803232)
+
+[node name="Agent12" parent="." unique_id=751695940 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.194899, 0, 7.9391265)
+
+[node name="Agent13" parent="." unique_id=1935763804 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.741615, 0, 4.381115)
+
+[node name="Agent14" parent="." unique_id=124016334 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.099637, 0, 2.684126)
+
+[node name="Agent15" parent="." unique_id=1574125032 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8897896, 0, -5.4436617)
+
+[node name="Agent16" parent="." unique_id=673356724 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.988796, 0, -3.3077674)
+
+[node name="Agent17" parent="." unique_id=490137105 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.535513, 0, -6.865779)
+
+[node name="Agent18" parent="." unique_id=1044529020 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8935347, 0, -8.562768)
+
+[node name="Agent5" parent="." unique_id=755263432 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2452552, 0, -2.0937953)
+
+[node name="Agent6" parent="." unique_id=1332913128 instance=ExtResource("1_2pr80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8157883, 0, 7.3452644)
