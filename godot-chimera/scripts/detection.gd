@@ -9,8 +9,8 @@ var bodies_in_vision:Array[CharacterBody3D] = []
 
 func _init() -> void:
 	# hitboxes can't be hurt
-	#monitoring = true
-	#monitorable = false
+	monitoring = true
+	monitorable = false
 	body_entered.connect(_on_body_in_range)
 
 func _ready() -> void:
