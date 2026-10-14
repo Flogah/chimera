@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var hurt_box: HurtBox = %HurtBox
 @onready var hit_box: HitBox = %HitBox
 @onready var state_machine: StateMachine = %StateMachine
+@onready var detection: Detection = %Detection
 
 @export var patrol_parent: Node3D
 var patrol_points:Array[Node3D]
