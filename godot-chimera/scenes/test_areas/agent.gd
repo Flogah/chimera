@@ -3,6 +3,10 @@ extends CharacterBody3D
 @onready var nav_agent: NavigationAgent3D = %NavigationAgent3D
 @onready var hurt_box: HurtBox = %HurtBox
 @onready var hit_box: HitBox = %HitBox
+@onready var state_machine: StateMachine = %StateMachine
+
+@export var patrol_parent: Node3D
+var patrol_points:Array[Node3D]
 
 var has_target: bool = false
 var target_pos: Vector3
@@ -11,6 +15,12 @@ var speed: float = 3.0
 func _ready() -> void:
 	hurt_box.hit_received.connect(get_hurt)
 	hit_box.hit.connect(hit_something)
+	
+	if patrol_parent:
+		for child in patrol_parent.get_children():
+			patrol_points.append(child)
+		
+		state_machine.change_state("patrol", {"patrol_points": patrol_points})
 
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():

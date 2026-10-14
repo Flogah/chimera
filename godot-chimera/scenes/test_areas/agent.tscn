@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://t1iltwrh3vih" path="res://scripts/state_machine/states/random_walk.gd" id="4_es3lf"]
 [ext_resource type="Script" uid="uid://bbnhtix0c3xu1" path="res://scripts/state_machine/states/attack.gd" id="5_we4hy"]
 [ext_resource type="Script" uid="uid://br33q50bl3mxq" path="res://scripts/hitbox/hurtbox.gd" id="7_bhxjw"]
+[ext_resource type="Script" uid="uid://fvefmue4cxkv" path="res://scripts/state_machine/states/patrol.gd" id="7_bjb13"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ifpyu"]
 
@@ -137,9 +138,9 @@ avoidance_enabled = true
 radius = 0.3
 neighbor_distance = 15.0
 
-[node name="StateMachine" type="Node" parent="." unique_id=851342564 node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=851342564]
+unique_name_in_owner = true
 script = ExtResource("2_es3lf")
-initial_state = NodePath("RandomWalk")
 metadata/_custom_type_script = "uid://dyhj68uu5cf1y"
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1575010321]
@@ -147,9 +148,8 @@ script = ExtResource("3_we4hy")
 state_id = &"idle"
 metadata/_custom_type_script = "uid://b4nipnw2rntbg"
 
-[node name="RandomWalk" type="Node" parent="StateMachine" unique_id=1978067849 node_paths=PackedStringArray("idle_state", "nav_agent")]
+[node name="RandomWalk" type="Node" parent="StateMachine" unique_id=1978067849 node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("4_es3lf")
-idle_state = NodePath("../Idle")
 nav_agent = NodePath("../../NavigationAgent3D")
 state_id = &"random_walk"
 metadata/_custom_type_script = "uid://b4nipnw2rntbg"
@@ -165,6 +165,12 @@ metadata/_custom_type_script = "uid://b4nipnw2rntbg"
 [node name="AttackAnimPlayer" type="AnimationPlayer" parent="StateMachine/Attack" unique_id=1494900851]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_bhxjw")
+
+[node name="Patrol" type="Node" parent="StateMachine" unique_id=1195464023 node_paths=PackedStringArray("nav_agent")]
+script = ExtResource("7_bjb13")
+nav_agent = NodePath("../../NavigationAgent3D")
+state_id = &"patrol"
+metadata/_custom_type_script = "uid://b4nipnw2rntbg"
 
 [node name="HurtBox" type="Area3D" parent="." unique_id=69552363]
 unique_name_in_owner = true

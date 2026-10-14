@@ -1,6 +1,5 @@
 extends State
 
-@export var idle_state:State
 @export var nav_agent: NavigationAgent3D
 
 var random_timer: Timer

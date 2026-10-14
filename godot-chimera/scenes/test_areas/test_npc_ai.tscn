@@ -130,55 +130,27 @@ shape = SubResource("CylinderShape3D_ifpyu")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1313659427]
 transform = Transform3D(1, 0, 0, 0, 0.6707497, 0.74168384, 0, -0.74168384, 0.6707497, 0, 11.547187, 13)
 
-[node name="Agent" parent="." unique_id=623580250 instance=ExtResource("1_2pr80")]
+[node name="Agent" parent="." unique_id=623580250 node_paths=PackedStringArray("patrol_parent") instance=ExtResource("1_2pr80")]
+patrol_parent = NodePath("../PatrolPath")
 
-[node name="Agent2" parent="." unique_id=2132754753 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0990071, 0, 2.1358943)
+[node name="PatrolPath" type="Node3D" parent="." unique_id=1962023532]
 
-[node name="Agent3" parent="." unique_id=1601360894 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6457229, 0, -1.422117)
+[node name="PatrolPoint" type="Marker3D" parent="PatrolPath" unique_id=1356948680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.454724, 1.3201942, -6.1169643)
+gizmo_extents = 1.0
 
-[node name="Agent4" parent="." unique_id=1427131136 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0037448406, 0, -3.1191068)
+[node name="PatrolPoint2" type="Marker3D" parent="PatrolPath" unique_id=619249291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.454724, 1.3201942, 7.0563183)
+gizmo_extents = 1.0
 
-[node name="Agent7" parent="." unique_id=1458650736 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.270391, 0, -5.6784725)
+[node name="PatrolPoint3" type="Marker3D" parent="PatrolPath" unique_id=925282096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3623729, 1.3201942, 3.664854)
+gizmo_extents = 1.0
 
-[node name="Agent8" parent="." unique_id=234061437 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1713843, 0, -3.5425782)
+[node name="PatrolPoint4" type="Marker3D" parent="PatrolPath" unique_id=217356890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8684115, 1.3201952, 7.0148945)
+gizmo_extents = 1.0
 
-[node name="Agent9" parent="." unique_id=874148819 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6246686, 0, -7.1005898)
-
-[node name="Agent10" parent="." unique_id=869345709 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.266646, 0, -8.797579)
-
-[node name="Agent11" parent="." unique_id=711257947 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.095892, 0, 5.803232)
-
-[node name="Agent12" parent="." unique_id=751695940 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.194899, 0, 7.9391265)
-
-[node name="Agent13" parent="." unique_id=1935763804 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.741615, 0, 4.381115)
-
-[node name="Agent14" parent="." unique_id=124016334 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.099637, 0, 2.684126)
-
-[node name="Agent15" parent="." unique_id=1574125032 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8897896, 0, -5.4436617)
-
-[node name="Agent16" parent="." unique_id=673356724 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.988796, 0, -3.3077674)
-
-[node name="Agent17" parent="." unique_id=490137105 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.535513, 0, -6.865779)
-
-[node name="Agent18" parent="." unique_id=1044529020 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8935347, 0, -8.562768)
-
-[node name="Agent5" parent="." unique_id=755263432 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2452552, 0, -2.0937953)
-
-[node name="Agent6" parent="." unique_id=1332913128 instance=ExtResource("1_2pr80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8157883, 0, 7.3452644)
+[node name="PatrolPoint5" type="Marker3D" parent="PatrolPath" unique_id=2108728145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5159316, 1.3201952, -4.8940725)
+gizmo_extents = 1.0
