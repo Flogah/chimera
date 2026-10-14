@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bbnhtix0c3xu1" path="res://scripts/state_machine/states/attack.gd" id="5_we4hy"]
 [ext_resource type="Script" uid="uid://br33q50bl3mxq" path="res://scripts/hitbox/hurtbox.gd" id="7_bhxjw"]
 [ext_resource type="Script" uid="uid://fvefmue4cxkv" path="res://scripts/state_machine/states/patrol.gd" id="7_bjb13"]
+[ext_resource type="Script" uid="uid://bbjf1da2xb67t" path="res://scripts/state_machine/states/follow.gd" id="8_bjb13"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ifpyu"]
 
@@ -170,6 +171,11 @@ libraries/ = SubResource("AnimationLibrary_bhxjw")
 script = ExtResource("7_bjb13")
 nav_agent = NodePath("../../NavigationAgent3D")
 state_id = &"patrol"
+metadata/_custom_type_script = "uid://b4nipnw2rntbg"
+
+[node name="Follow" type="Node" parent="StateMachine" unique_id=1875046626]
+script = ExtResource("8_bjb13")
+state_id = &"follow"
 metadata/_custom_type_script = "uid://b4nipnw2rntbg"
 
 [node name="HurtBox" type="Area3D" parent="." unique_id=69552363]
