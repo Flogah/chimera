@@ -46,7 +46,6 @@ navigation_mesh = SubResource("NavigationMesh_xafao")
 [node name="Floor" type="StaticBody3D" parent="Level" unique_id=1862357096]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Floor" unique_id=1364284147]
-visible = false
 shape = SubResource("WorldBoundaryShape3D_ifpyu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Floor" unique_id=2125888576]
