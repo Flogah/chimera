@@ -24,8 +24,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_out"):
 		camera_arm.spring_length += 1
 	
-#	if event.is_action_pressed("toggle_mouse_capture"):
-#		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-#			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-#		else:
-#			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if event.is_action_pressed("toggle_mouse_capture"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
