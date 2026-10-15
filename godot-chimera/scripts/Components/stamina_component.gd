@@ -13,6 +13,7 @@ signal changed(new: float)
 signal empty
 
 func _process(delta: float) -> void:
+	print(stamina)
 	if delay >= regeneration_delay:
 		regenerate(delta)
 	else:

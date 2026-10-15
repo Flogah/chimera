@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://baq883inyv1c4" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://dea12upbo0lts" path="res://scenes/Camera/camera_arm.tscn" id="2_gmlin"]
+[ext_resource type="Script" uid="uid://dyhj68uu5cf1y" path="res://scripts/Components/state_machine/state_machine.gd" id="3_lvxji"]
+[ext_resource type="Script" uid="uid://cbp127u8wf73m" path="res://scenes/player/move_state.gd" id="4_p47bc"]
+[ext_resource type="Script" uid="uid://dyv1er2a6vk4c" path="res://scenes/player/rolling.gd" id="5_p47bc"]
+[ext_resource type="Script" uid="uid://qx0q1tx52b1b" path="res://scripts/Components/stamina_component.gd" id="6_75vfm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xgnvx"]
 radius = 0.2841797
@@ -36,3 +40,20 @@ mesh = SubResource("CapsuleMesh_xgnvx")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh" unique_id=1141002807]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5875686, -0.29023463)
 mesh = SubResource("PrismMesh_xgnvx")
+
+[node name="MovementStateMachine" type="Node" parent="." unique_id=1450202359 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_lvxji")
+initial_state = NodePath("Moving")
+
+[node name="Moving" type="Node" parent="MovementStateMachine" unique_id=92557771 node_paths=PackedStringArray("player")]
+script = ExtResource("4_p47bc")
+player = NodePath("../..")
+
+[node name="Rolling" type="Node" parent="MovementStateMachine" unique_id=1717503852 node_paths=PackedStringArray("player", "stamina_comp")]
+script = ExtResource("5_p47bc")
+player = NodePath("../..")
+stamina_comp = NodePath("../../StaminaComp")
+
+[node name="StaminaComp" type="Node" parent="." unique_id=336005374]
+script = ExtResource("6_75vfm")
+regeneraton_amount = 30.0
