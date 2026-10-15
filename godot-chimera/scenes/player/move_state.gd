@@ -9,7 +9,7 @@ func update(delta: float) -> void:
 		forward.y = 0.0
 		forward = forward.normalized()
 		
-		var right: Vector3 = -player.camera_arm.global_transform.basis.x.normalized()
+		var right: Vector3 = player.camera_arm.global_transform.basis.x.normalized()
 		
 		var move_vector: Vector3 = right * input_vector.x - forward * input_vector.y
 		player.velocity.x = move_vector.x * player.speed
