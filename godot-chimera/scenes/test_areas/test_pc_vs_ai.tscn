@@ -104,7 +104,7 @@ patrol_parent = NodePath("../PatrolPointsLab")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8551979, 3, 0.4532528)
 
 [node name="Player" parent="." unique_id=1494987689 instance=ExtResource("2_25sy3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9648333, -9.536743e-07, 6.5965986)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9299784, -9.536743e-07, 11.644451)
 
 [node name="PatrolPointsLab" type="Node3D" parent="." unique_id=919855276]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.284949, 0, 3.3327112)

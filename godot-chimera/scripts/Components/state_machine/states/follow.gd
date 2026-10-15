@@ -12,15 +12,21 @@ func enter_state(_data: Dictionary = {}) -> void:
 		nav_agent.target_position = target.global_position
 	elif target:
 		target_location = target.global_position
+		target = null
 		nav_agent.target_position = target_location
 	else:
 		switch_state.emit("idle")
 
 func physics_update(_delta: float) -> void:
-	if nav_agent.is_navigation_finished():
-		switch_state.emit("attack")
-	elif !nav_agent.target_position.is_equal_approx(target.global_position):
+	if target:
 		nav_agent.target_position = target.global_position
+	
+	if nav_agent.is_navigation_finished():
+		if target:
+			switch_state.emit("attack")
+		else:
+			switch_state.emit("idle")
+	
 	
 	var next_path_pos: Vector3 = nav_agent.get_next_path_position()
 	var dir = actor.global_position.direction_to(next_path_pos)

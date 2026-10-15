@@ -181,8 +181,9 @@ nav_agent = NodePath("../../NavigationAgent3D")
 state_id = &"patrol"
 metadata/_custom_type_script = "uid://b4nipnw2rntbg"
 
-[node name="Follow" type="Node" parent="StateMachine" unique_id=1875046626]
+[node name="Follow" type="Node" parent="StateMachine" unique_id=1875046626 node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("8_bjb13")
+nav_agent = NodePath("../../NavigationAgent3D")
 state_id = &"follow"
 metadata/_custom_type_script = "uid://b4nipnw2rntbg"
 

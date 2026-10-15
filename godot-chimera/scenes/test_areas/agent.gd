@@ -20,8 +20,8 @@ func _ready() -> void:
 	hurt_box.hit_received.connect(get_hurt)
 	hit_box.hit.connect(hit_something)
 	
-	target_acquired.connect(func(): state_machine.change_state("follow", {"target": target}))
-	target_lost.connect(func(): state_machine.change_state("follow"))
+	detection.visual_confirmed.connect(make_target)
+	detection.visual_lost.connect(lose_target)
 
 func get_hurt(hitbox: HitBox):
 	if hitbox == hit_box:
@@ -35,13 +35,13 @@ func hit_something(hurtbox: HurtBox):
 	
 	print(name + ": I hit " + hurtbox.owner.name)
 
-func make_target(body: CharacterBody3D):
+func make_target(body):
 	if body is Player:
 		target = body
 		target_acquired.emit(target)
-		
+		state_machine.change_state("follow", {"target": target})
 
-func lose_target():
+func lose_target(body):
 	target_lost.emit(target)
 	target = null
-	
+	state_machine.change_state("follow")

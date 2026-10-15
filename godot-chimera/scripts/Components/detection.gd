@@ -40,16 +40,23 @@ func _physics_process(delta: float) -> void:
 		if confirm_vision(body) and !bodies_in_vision.has(body):
 			bodies_in_vision.append(body)
 			visual_confirmed.emit(body)
-		elif bodies_in_vision.has(body):
+		elif !confirm_vision(body) and bodies_in_vision.has(body):
 			bodies_in_vision.erase(body)
 			visual_lost.emit(body)
 	
 	visualize_vision()
 
 func confirm_vision(body) -> bool:
+	# this will need a rewrite to be a vision cone consisting of raycast3D
 	var space_state = get_world_3d().direct_space_state
-	
 	var query = PhysicsRayQueryParameters3D.create(global_position + head_offset, body.global_position + head_offset)
+	# this is set as a bitmask, so
+	# layer 1 = 1
+	# layer 2 = 2
+	# layer 3 = 4
+	# layer 4 = 8
+	# layers 1 and 2: 1+2 = 3
+	query.collision_mask = 3
 	var result = space_state.intersect_ray(query)
 	if !result.is_empty():
 		var collider = result.get("collider")
