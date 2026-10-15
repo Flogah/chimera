@@ -21,4 +21,4 @@ func update(delta: float) -> void:
 		
 		if Input.is_action_just_pressed("roll") and player.is_on_floor():
 			switch_state.emit("Rolling", { direction = move_vector })
-			print(input_vector)
+			#print(input_vector)
