@@ -44,4 +44,3 @@ func make_target(body):
 func lose_target(body):
 	target_lost.emit(target)
 	target = null
-	state_machine.change_state("follow")

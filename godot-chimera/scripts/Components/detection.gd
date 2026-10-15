@@ -34,6 +34,9 @@ func _on_body_in_range(body: Node3D):
 func _on_body_out_of_range(body: Node3D):
 		if bodies_in_range.has(body):
 			bodies_in_range.erase(body)
+		if bodies_in_vision.has(body):
+			bodies_in_vision.erase(body)
+			visual_lost.emit(body)
 
 func _physics_process(delta: float) -> void:
 	for body in bodies_in_range:

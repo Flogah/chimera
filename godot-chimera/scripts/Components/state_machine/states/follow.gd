@@ -10,9 +10,11 @@ func enter_state(_data: Dictionary = {}) -> void:
 	if _data.has("target"):
 		target = _data.get("target")
 		nav_agent.target_position = target.global_position
-	elif target:
-		target_location = target.global_position
-		target = null
+		owner.target_lost.connect(lose_target)
+	elif _data.has("target_location"):
+		target_location = _data.get("target_location")
+		nav_agent.target_position = target_location
+	elif target_location:
 		nav_agent.target_position = target_location
 	else:
 		switch_state.emit("idle")
@@ -20,13 +22,14 @@ func enter_state(_data: Dictionary = {}) -> void:
 func physics_update(_delta: float) -> void:
 	if target:
 		nav_agent.target_position = target.global_position
+	else:
+		nav_agent.target_position = target_location
 	
 	if nav_agent.is_navigation_finished():
 		if target:
 			switch_state.emit("attack")
 		else:
 			switch_state.emit("idle")
-	
 	
 	var next_path_pos: Vector3 = nav_agent.get_next_path_position()
 	var dir = actor.global_position.direction_to(next_path_pos)
@@ -45,8 +48,13 @@ func physics_update(_delta: float) -> void:
 	
 	actor.move_and_slide()
 
+func lose_target(body: Node3D):
+	target_location = body.global_position
+	target = null
+
 func exit_state() -> void:
 	nav_agent.velocity_computed.disconnect(on_velocity_computed)
+	owner.target_lost.disconnect(lose_target)
 
 func on_velocity_computed(safe_velocity: Vector3) -> void:
 	actor.velocity = safe_velocity
