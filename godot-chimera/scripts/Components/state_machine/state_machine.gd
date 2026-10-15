@@ -79,7 +79,7 @@ func _check_pending_transition() -> void:
 func _execute_transition(new_state: State, data: Dictionary) -> void:
 	if active_state == new_state:
 		active_state.exit_state()
-		active_state.enter(data)
+		active_state.enter_state(data)
 		return
 
 	if active_state:

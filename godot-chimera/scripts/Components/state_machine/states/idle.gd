@@ -1,6 +1,11 @@
 extends State
 
 func enter_state(_data: Dictionary = {}) -> void:
+	# very hacky, my god
+	# but it works
+	if owner.target != null:
+		switch_state.emit("follow", {"target": owner.target})
+	
 	actor.velocity = Vector3.ZERO
 	actor.move_and_slide()
 
