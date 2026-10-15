@@ -15,6 +15,7 @@ height = 1.8
 size = Vector3(0.3, 0.6, 0.3)
 
 [node name="Player" type="CharacterBody3D" unique_id=1494987689]
+collision_layer = 2
 script = ExtResource("1_dovo2")
 
 [node name="Camera_Arm" parent="." unique_id=1807282293 instance=ExtResource("2_gmlin")]

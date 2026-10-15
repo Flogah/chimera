@@ -8,6 +8,9 @@ class_name Player
 @onready var mesh: Node3D = %Mesh
 
 func _physics_process(delta: float) -> void:
+	if !is_on_floor():
+		velocity += get_gravity()
+	
 	var input_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var forward: Vector3 = -camera_arm.global_transform.basis.z
 	forward.y = 0.0

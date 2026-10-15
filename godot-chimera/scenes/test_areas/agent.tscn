@@ -20,6 +20,7 @@ size = Vector3(0.11743164, 1, 1)
 size = Vector3(0.5722656, 2.6103516, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ifpyu"]
+radius = 0.25
 
 [sub_resource type="Animation" id="Animation_j77wx"]
 length = 0.001
@@ -111,7 +112,7 @@ _data = {
 radius = 8.50236
 
 [node name="Agent" type="CharacterBody3D" unique_id=623580250]
-collision_layer = 2
+collision_layer = 4
 script = ExtResource("1_m1f6j")
 
 [node name="Body" type="MeshInstance3D" parent="." unique_id=602430447]
@@ -138,14 +139,17 @@ shape = SubResource("CapsuleShape3D_ifpyu")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1560798009]
 unique_name_in_owner = true
+path_desired_distance = 0.5
 path_height_offset = 0.5
 avoidance_enabled = true
 radius = 0.3
 neighbor_distance = 15.0
+debug_enabled = true
 
-[node name="StateMachine" type="Node" parent="." unique_id=851342564]
+[node name="StateMachine" type="Node" parent="." unique_id=851342564 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
 script = ExtResource("2_es3lf")
+initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://dyhj68uu5cf1y"
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1575010321]
@@ -194,7 +198,7 @@ shape = SubResource("CapsuleShape3D_o3lxc")
 [node name="Detection" type="Area3D" parent="." unique_id=1280241424]
 unique_name_in_owner = true
 collision_layer = 0
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("10_7dvuf")
 metadata/_custom_type_script = "uid://cqruue83wwfr1"
 

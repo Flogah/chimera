@@ -23,10 +23,6 @@ func _ready() -> void:
 		
 		state_machine.change_state("patrol", {"patrol_points": patrol_points})
 
-func _physics_process(delta: float) -> void:
-	if !is_on_floor():
-		velocity.y -= 9.8
-
 func get_hurt(hitbox: HitBox):
 	if hitbox == hit_box:
 		return
