@@ -198,7 +198,7 @@ shape = SubResource("CapsuleShape3D_o3lxc")
 [node name="Detection" type="Area3D" parent="." unique_id=1280241424]
 unique_name_in_owner = true
 collision_layer = 0
-collision_mask = 6
+collision_mask = 2
 script = ExtResource("10_7dvuf")
 metadata/_custom_type_script = "uid://cqruue83wwfr1"
 

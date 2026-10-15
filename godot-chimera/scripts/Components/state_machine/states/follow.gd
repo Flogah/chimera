@@ -1,14 +1,20 @@
 extends State
 
 @export var nav_agent: NavigationAgent3D
-var target:Node3D
+var target: Node3D
+var target_location: Vector3
 
 func enter_state(_data: Dictionary = {}) -> void:
-	target = _data.get("target")
-	
-	nav_agent.target_position = target.global_position
-	
 	nav_agent.velocity_computed.connect(on_velocity_computed)
+	
+	if _data.has("target"):
+		target = _data.get("target")
+		nav_agent.target_position = target.global_position
+	elif target:
+		target_location = target.global_position
+		nav_agent.target_position = target_location
+	else:
+		switch_state.emit("idle")
 
 func physics_update(_delta: float) -> void:
 	if nav_agent.is_navigation_finished():

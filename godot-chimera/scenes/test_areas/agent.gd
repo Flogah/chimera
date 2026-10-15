@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+signal target_acquired(target)
+signal target_lost(target)
+
 @onready var nav_agent: NavigationAgent3D = %NavigationAgent3D
 @onready var hurt_box: HurtBox = %HurtBox
 @onready var hit_box: HitBox = %HitBox
@@ -9,28 +12,20 @@ extends CharacterBody3D
 @export var patrol_parent: Node3D
 var patrol_points:Array[Node3D]
 
-var has_target: bool = false
-var target_pos: Vector3
+var target:CharacterBody3D
+
 var speed: float = 3.0
 
 func _ready() -> void:
 	hurt_box.hit_received.connect(get_hurt)
 	hit_box.hit.connect(hit_something)
 	
-	if patrol_parent:
-		for child in patrol_parent.get_children():
-			patrol_points.append(child)
-		
-		state_machine.change_state("patrol", {"patrol_points": patrol_points})
+	target_acquired.connect(func(): state_machine.change_state("follow", {"target": target}))
+	target_lost.connect(func(): state_machine.change_state("follow"))
 
 func get_hurt(hitbox: HitBox):
 	if hitbox == hit_box:
 		return
-	
-	var blast_dir:Vector3 = (hitbox.global_position - global_position).normalized()
-	blast_dir.y = 0.5
-	
-	velocity = blast_dir.normalized() * 50.0
 	
 	print(name + ": I have been hurt!")
 
@@ -38,4 +33,15 @@ func hit_something(hurtbox: HurtBox):
 	if hurtbox == hurt_box:
 		return
 	
-	print(name + ": I hit something!")
+	print(name + ": I hit " + hurtbox.owner.name)
+
+func make_target(body: CharacterBody3D):
+	if body is Player:
+		target = body
+		target_acquired.emit(target)
+		
+
+func lose_target():
+	target_lost.emit(target)
+	target = null
+	
