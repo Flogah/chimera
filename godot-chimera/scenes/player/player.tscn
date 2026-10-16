@@ -24,7 +24,7 @@ script = ExtResource("1_dovo2")
 
 [node name="Camera_Arm" parent="." unique_id=1807282293 instance=ExtResource("2_gmlin")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96496403, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.554864, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=686471291]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8778564, 0)
