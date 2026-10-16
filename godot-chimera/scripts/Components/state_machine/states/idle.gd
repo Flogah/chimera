@@ -11,6 +11,6 @@ func enter_state(_data: Dictionary = {}) -> void:
 
 func physics_update(_delta: float) -> void:
 	if !actor.is_on_floor():
-		actor.velocity.y -= 9.8
+		actor.velocity += actor.get_gravity() * _delta
 	
 	actor.move_and_slide()
