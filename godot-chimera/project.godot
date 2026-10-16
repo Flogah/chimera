@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="godot_chimera"
-run/main_scene="uid://dngqh6uidikyo"
+run/main_scene="uid://bb64duv5rkrha"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
