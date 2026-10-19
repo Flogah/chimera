@@ -18,11 +18,16 @@ config/icon="res://icon.svg"
 [autoload]
 
 Draw3d="*uid://ciuaegfq3wptc"
+GdPAIAutoload="*uid://ol4q4tu0vtwo"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/GdPlanningAI/plugin.cfg")
 
 [input]
 
